@@ -1,0 +1,66 @@
+@import "../../styles/colors.scss";
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-white;
+  color: $white;
+
+  .container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+
+    .logo {
+      font-size: 34px;
+      font-weight: bold;
+      .text {
+      }
+      .dot {
+        color: $green-light;
+      }
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      button {
+        color: $white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: 1px solid $white;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $green-light;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    height: 0;
+    border: 0.5px solid $light-gray;
+  }
+
+  .menu {
+    color: $gray;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    max-width: 1400px;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+  }
+}
