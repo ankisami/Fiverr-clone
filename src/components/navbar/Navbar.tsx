@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
+import { userMocked } from "~/mocks/user";
 import { Link } from "react-router-dom";
+import profile1 from "~/assets/images/profile1.jpeg";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
+  const [isOpenProfileMenu, setisOpenProfileMenu] = useState(false);
+  const currentUser = userMocked;
 
   const displayNavbar = () => {
     window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
@@ -29,8 +33,30 @@ const Navbar = () => {
           <span>Explore</span>
           <span>English</span>
           <span>Sign in</span>
-          <span>Become a Seller</span>
-          <button>Join</button>
+          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {!currentUser && <button>Join</button>}
+          {currentUser && (
+            <div
+              className="user"
+              onClick={() => setisOpenProfileMenu((prev) => !prev)}
+            >
+              <img src={profile1} alt="profile" />
+              <span>{currentUser?.username}</span>
+              {isOpenProfileMenu && (
+                <div className="options">
+                  {currentUser?.isSeller && (
+                    <>
+                      <span>Gigs</span>
+                      <span>Add New Gig</span>
+                    </>
+                  )}
+                  <span>Orders</span>
+                  <span>Messages</span>
+                  <span>Logout</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
