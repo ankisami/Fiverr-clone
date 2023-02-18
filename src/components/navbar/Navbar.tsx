@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { userMocked } from "~/mocks/user";
 import { Link } from "react-router-dom";
 import profile1 from "~/assets/images/profile1.jpeg";
+import "~/App.scss";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -23,10 +24,12 @@ const Navbar = () => {
   return (
     <div className={isActive ? "navbar active" : "navbar"}>
       <div className="container">
-        <div className="logo">
-          <span className="text">fiverr</span>
-          <span className="dot">.</span>
-        </div>
+        <Link to="/" className="link">
+          <div className="logo">
+            <span className="text">fiverr</span>
+            <span className="dot">.</span>
+          </div>
+        </Link>
 
         <div className="links">
           <span>Fiverr Business</span>
