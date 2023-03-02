@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import { userMocked } from "~/mocks/user";
-import { Link } from "react-router-dom";
+import { mockedUser } from "~/mocks/user";
+import { Link, useLocation } from "react-router-dom";
 import profile1 from "~/assets/images/profile1.jpeg";
 import "~/App.scss";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [isOpenProfileMenu, setisOpenProfileMenu] = useState(false);
-  const currentUser = userMocked;
+  const currentUser = mockedUser;
+  const { pathname } = useLocation();
 
   const displayNavbar = () => {
     window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
@@ -22,7 +23,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={isActive ? "navbar active" : "navbar"}>
+    <div className={isActive || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
         <Link to="/" className="link">
           <div className="logo">
@@ -49,13 +50,23 @@ const Navbar = () => {
                 <div className="options">
                   {currentUser?.isSeller && (
                     <>
-                      <span>Gigs</span>
-                      <span>Add New Gig</span>
+                      <Link className="link" to="/my-gigs">
+                        Gigs
+                      </Link>
+                      <Link className="link" to="/add">
+                        Add New Gig
+                      </Link>
                     </>
                   )}
-                  <span>Orders</span>
-                  <span>Messages</span>
-                  <span>Logout</span>
+                  <Link className="link" to="/orders">
+                    Orders
+                  </Link>
+                  <Link className="link" to="/messages">
+                    Messages
+                  </Link>
+                  <Link className="link" to="">
+                    Logout
+                  </Link>
                 </div>
               )}
             </div>
@@ -63,12 +74,37 @@ const Navbar = () => {
         </div>
       </div>
 
-      {isActive && (
+      {(isActive || pathname !== "/") && (
         <>
           <hr />
           <div className="menu">
-            <span>test</span>
-            <span>test2</span>
+            <Link className="link menuLink" to="/">
+              Graphics & Design
+            </Link>
+            <Link className="link " to="/">
+              Video & Animation
+            </Link>
+            <Link className="link " to="/">
+              Writing & Translation
+            </Link>
+            <Link className="link " to="/">
+              AI Services
+            </Link>
+            <Link className="link " to="/">
+              Digital Marketing
+            </Link>
+            <Link className="link " to="/">
+              Music & Audio
+            </Link>
+            <Link className="link " to="/">
+              Programming & Tech
+            </Link>
+            <Link className="link " to="/">
+              Business
+            </Link>
+            <Link className="link " to="/">
+              Lifestyle
+            </Link>
           </div>
         </>
       )}
