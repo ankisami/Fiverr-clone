@@ -4,6 +4,7 @@ import { mockedUser } from "~/mocks/user";
 import { Link, useLocation } from "react-router-dom";
 import profile1 from "~/assets/images/profile1.jpeg";
 import "~/App.scss";
+import useOutsideClicker from "~/hooks/useOutsideClicker";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -14,6 +15,9 @@ const Navbar = () => {
   const displayNavbar = () => {
     window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
   };
+
+  const outClickableRef = useOutsideClicker(() => setisOpenProfileMenu(false));
+
   useEffect(() => {
     window.addEventListener("scroll", displayNavbar);
 
@@ -43,6 +47,7 @@ const Navbar = () => {
             <div
               className="user"
               onClick={() => setisOpenProfileMenu((prev) => !prev)}
+              ref={outClickableRef}
             >
               <img src={profile1} alt="profile" />
               <span>{currentUser?.username}</span>

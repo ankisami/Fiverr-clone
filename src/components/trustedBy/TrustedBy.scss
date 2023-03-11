@@ -1,0 +1,46 @@
+@import "~/styles/colors";
+
+.trustedBy {
+  background-color: $white-light;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 760px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: $light-gray;
+    font-weight: 600;
+
+    ul {
+      display: flex;
+      gap: 2vw;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      max-height: 50px;
+      &.meta {
+        max-height: 16px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    span {
+      display: none;
+    }
+    ul {
+      gap: 20px;
+    }
+  }
+}

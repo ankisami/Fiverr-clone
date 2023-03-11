@@ -11,6 +11,7 @@
     width: 1400px;
     display: flex;
     align-items: center;
+    padding: 0 0 0 20px;
   }
   .left {
     display: flex;
@@ -42,6 +43,9 @@
         padding: 10px;
         margin: 10px;
       }
+      img {
+        padding-left: 20px;
+      }
       input {
         flex: 1;
         border: none;
@@ -59,10 +63,10 @@
   }
   .popular {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    span {
-    }
+
     button {
       color: $white;
       background-color: transparent;
@@ -79,6 +83,15 @@
     img {
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  @media screen and (max-width: 1015px) {
+    .right {
+      display: none;
+    }
+    .container {
+      padding: 0 20px;
     }
   }
 }

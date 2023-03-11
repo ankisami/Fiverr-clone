@@ -2,6 +2,7 @@ import { useRef } from "react";
 import "./Featured.scss";
 //assets
 import myPicturePng from "~/assets/images/my-picture.png";
+import zachPng from "~/assets/images/zach.png";
 import searchSvg from "~/assets/icons/search.svg";
 
 const Featured = () => {
@@ -37,7 +38,7 @@ const Featured = () => {
           </div>
         </div>
         <div className="right">
-          <img src={myPicturePng} alt="" />
+          <img src={zachPng} alt="" />
         </div>
       </div>
     </div>
