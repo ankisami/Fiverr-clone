@@ -5,17 +5,49 @@
     background-color: $white-light3;
     display: flex;
     justify-content: center;
-    padding: 100px 0;
+    padding: 100px 20px;
+    &.dark {
+      background-color: $blue-marine;
+      h1 {
+        color: $white !important;
+      }
+      p {
+        color: $white !important;
+      }
+      .title {
+        color: $white !important;
+        font-weight: 300;
+        font-size: 14px;
+      }
+      .featureImage {
+        width: 100%;
+        object-fit: cover;
+      }
+      button {
+        background-color: $green-light;
+        color: $white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        border: none;
+        width: max-content;
+      }
+    }
 
     .container {
-      width: 1400px;
+      max-width: 1400px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 200px;
+      justify-content: center;
+      gap: 100px;
       .item {
         display: flex;
         flex-direction: column;
         gap: 15px;
+        min-width: 555px;
         &:first-child {
           flex: 2;
         }
@@ -42,14 +74,18 @@
         font-weight: 500;
         font-size: 18px;
         color: $black;
-      }
-      img {
-        width: 24px;
-        height: 24px;
+        img {
+          width: 24px;
+          height: 24px;
+        }
       }
       video {
+        place-self: end;
         width: 100%;
-        max-width: 720px;
+        max-width: 850px;
+        @media screen and (max-width: 1250px) {
+          place-self: center;
+        }
       }
     }
   }

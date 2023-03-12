@@ -20,3 +20,9 @@ export const featuresMock = [
       "Questions? Our round-the-clock support team is available to help anytime, anywhere.",
   },
 ];
+
+export const featuresMock2 = [
+  "Connect to freelancers with proven business experience",
+  "Get matched with the perfect talent by a customer success manager",
+  "Manage teamwork and boost productivity with one powerful workspace",
+];
