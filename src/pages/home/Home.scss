@@ -5,7 +5,6 @@
     background-color: $white-light3;
     display: flex;
     justify-content: center;
-    padding: 100px 20px;
     &.dark {
       background-color: $blue-marine;
       h1 {
@@ -34,15 +33,17 @@
         border: none;
         width: max-content;
         &:hover {
-          background-color: $green-dark;
+          outline: 2px solid $white;
         }
-        &:focus {
-          border: 1px solid $white;
+        &:active {
+          background-color: $green-dark;
+          outline: none;
         }
       }
     }
 
     .container {
+      padding: 100px 20px;
       max-width: 1400px;
       display: flex;
       flex-wrap: wrap;
@@ -53,7 +54,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        min-width: 555px;
+        min-width: 375px;
         &:first-child {
           flex: 2;
         }

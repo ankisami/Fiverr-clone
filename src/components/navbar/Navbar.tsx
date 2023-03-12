@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import { mockedUser } from "~/mocks/user.mocks";
-import { Link, useLocation } from "react-router-dom";
-import profile1 from "~/assets/images/profile1.jpeg";
 import "~/App.scss";
+//mocks
+import { mockedUser } from "~/mocks/user.mocks";
+//libs
+import { Link, useLocation } from "react-router-dom";
+//assets
+import profile1 from "~/assets/images/profile1.jpeg";
+import arrow from "~/assets/icons/arrow.svg";
+//hooks
 import useOutsideClicker from "~/hooks/useOutsideClicker";
 
 const Navbar = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActiveMainMenu, setsetIsActiveMainMenuMainMenu] = useState(false);
   const [isOpenProfileMenu, setisOpenProfileMenu] = useState(false);
+  const [isActiveMainMenuSubMenu, setIsActiveMainMenuSubMenu] = useState(false);
   const currentUser = mockedUser;
   const { pathname } = useLocation();
 
   const displayNavbar = () => {
-    window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
+    window.scrollY > 0
+      ? setsetIsActiveMainMenuMainMenu(true)
+      : setsetIsActiveMainMenuMainMenu(false);
+    window.scrollY > 200
+      ? setIsActiveMainMenuSubMenu(true)
+      : setIsActiveMainMenuSubMenu(false);
   };
 
   const outClickableRef = useOutsideClicker(() => setisOpenProfileMenu(false));
@@ -27,7 +38,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={isActive || pathname !== "/" ? "navbar active" : "navbar"}>
+    <div
+      className={
+        isActiveMainMenu || pathname !== "/" ? "navbar active" : "navbar"
+      }
+    >
       <div className="container">
         <Link to="/" className="link">
           <div className="logo">
@@ -79,38 +94,61 @@ const Navbar = () => {
         </div>
       </div>
 
-      {(isActive || pathname !== "/") && (
+      {(isActiveMainMenuSubMenu || pathname !== "/") && (
         <>
           <hr />
-          <div className="menu">
-            <Link className="link menuLink" to="/">
-              Graphics & Design
-            </Link>
-            <Link className="link " to="/">
-              Video & Animation
-            </Link>
-            <Link className="link " to="/">
-              Writing & Translation
-            </Link>
-            <Link className="link " to="/">
-              AI Services
-            </Link>
-            <Link className="link " to="/">
-              Digital Marketing
-            </Link>
-            <Link className="link " to="/">
-              Music & Audio
-            </Link>
-            <Link className="link " to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link " to="/">
-              Business
-            </Link>
-            <Link className="link " to="/">
-              Lifestyle
-            </Link>
-          </div>
+          <ul className="menu">
+            <li>
+              <Link className="link menuLink" to="/">
+                Graphics & Design
+              </Link>
+            </li>
+
+            <li>
+              <Link className="link " to="/">
+                Video & Animation
+              </Link>
+            </li>
+
+            <li>
+              <Link className="link " to="/">
+                Writing & Translation
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                AI Services
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                Digital Marketing
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                Music & Audio
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                Programming & Tech
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                Business
+              </Link>
+            </li>
+            <li>
+              <Link className="link " to="/">
+                Lifestyle
+              </Link>
+            </li>
+            <button>
+              <img src={arrow} alt="" />
+            </button>
+          </ul>
         </>
       )}
     </div>
