@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import { mockedUser } from "~/mocks/user";
+import { mockedUser } from "~/mocks/user.mocks";
 import { Link, useLocation } from "react-router-dom";
 import profile1 from "~/assets/images/profile1.jpeg";
 import "~/App.scss";
