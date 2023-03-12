@@ -1,0 +1,56 @@
+@import "~/styles/colors";
+
+.home {
+  .features {
+    background-color: $white-light3;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+
+    .container {
+      width: 1400px;
+      display: flex;
+      align-items: center;
+      gap: 200px;
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &:first-child {
+          flex: 2;
+        }
+        &:last-child {
+          flex: 3;
+        }
+        h1 {
+          font-weight: 700;
+          margin-bottom: 10px;
+          font-size: 36px;
+        }
+      }
+      p {
+        font-size: 18px;
+        font-weight: 300;
+        color: #808080;
+        line-height: 28px;
+        letter-spacing: 1px;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        font-size: 18px;
+        color: $black;
+      }
+      img {
+        width: 24px;
+        height: 24px;
+      }
+      video {
+        width: 100%;
+        max-width: 720px;
+      }
+    }
+  }
+}
