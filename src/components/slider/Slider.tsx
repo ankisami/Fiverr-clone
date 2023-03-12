@@ -8,23 +8,18 @@ type Props = {
   slidesToShow?: number;
   arrowsScroll?: number;
 } & React.ComponentPropsWithRef<typeof Carousel>;
-const Slider = ({
-  children,
-  slidesToShow = 5,
-  arrowsScroll = 5,
-  ...props
-}: Props) => {
+const Slider = ({ children, slidesToShow = 5, ...props }: Props) => {
   const handleNumberOfSlides = () => {
     if (window.innerWidth > 1300) {
-      return 5;
+      return slidesToShow;
     } else if (window.innerWidth > 1030) {
-      return 4;
+      return slidesToShow - 1 > 0 ? slidesToShow - 1 : 1;
     } else if (window.innerWidth > 760) {
-      return 3;
+      return slidesToShow - 2 > 0 ? slidesToShow - 2 : 1;
     } else if (window.innerWidth > 490) {
-      return 2;
+      return slidesToShow - 3 > 0 ? slidesToShow - 3 : 1;
     } else {
-      return 1;
+      return slidesToShow - 4 > 0 ? slidesToShow - 4 : 1;
     }
   };
 

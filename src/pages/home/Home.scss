@@ -33,6 +33,12 @@
         cursor: pointer;
         border: none;
         width: max-content;
+        &:hover {
+          background-color: $green-dark;
+        }
+        &:focus {
+          border: 1px solid $white;
+        }
       }
     }
 

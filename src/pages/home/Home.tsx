@@ -1,10 +1,10 @@
 import React from "react";
 import "./Home.scss";
 //components
-import { Featured, Slider, TrustedBy } from "~/components";
+import { Featured, ProjectCard, Slider, TrustedBy } from "~/components";
 import CategoryCard from "~/components/categoryCard/CategoryCard";
 //mocks
-import { sliderMock } from "~/mocks/slider.mocks";
+import { categoriesMocked, projectsMocked } from "~/mocks/data.mocks";
 import { featuresMock, featuresMock2 } from "~/mocks/features.mocks";
 
 //assets
@@ -16,8 +16,8 @@ const Home = () => {
       <Featured />
       <TrustedBy />
       <Slider>
-        {sliderMock.map((item) => (
-          <CategoryCard key={item.id} item={item} />
+        {categoriesMocked.map((cat) => (
+          <CategoryCard key={cat.id} item={cat} />
         ))}
       </Slider>
       <section className="features">
@@ -72,6 +72,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <Slider slidesToShow={4}>
+        {projectsMocked.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </Slider>
     </div>
   );
 };
