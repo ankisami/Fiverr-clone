@@ -1,16 +1,16 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import { Navbar, Footer } from "~/components";
 import {
-  Home,
-  Add,
-  Gig,
-  Gigs,
-  Login,
-  Messages,
-  Message,
-  MyGigs,
-  Orders,
-  Register,
+  HomePage,
+  AddPage,
+  GigPage,
+  GigsPage,
+  LoginPage,
+  MessagesPage,
+  MessagePage,
+  MyGigsPage,
+  OrdersPage,
+  RegisterPage,
 } from "~/pages";
 
 const Layout = () => {
@@ -28,16 +28,16 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/gigs", element: <Gigs /> },
-      { path: "/gig/:id", element: <Gig /> },
-      { path: "/add", element: <Add /> },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
-      { path: "/my-gigs", element: <MyGigs /> },
-      { path: "/orders", element: <Orders /> },
-      { path: "/messages", element: <Messages /> },
-      { path: "/message/:id", element: <Message /> },
+      { path: "/", element: <HomePage /> },
+      { path: "/gigs", element: <GigsPage /> },
+      { path: "/gig/:id", element: <GigPage /> },
+      { path: "/add", element: <AddPage /> },
+      { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
+      { path: "/my-gigs", element: <MyGigsPage /> },
+      { path: "/orders", element: <OrdersPage /> },
+      { path: "/messages", element: <MessagesPage /> },
+      { path: "/message/:id", element: <MessagePage /> },
     ],
   },
 ]);

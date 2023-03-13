@@ -1,16 +1,15 @@
 import React from "react";
-import "./Home.scss";
+import "./HomePage.scss";
 //components
 import { Featured, ProjectCard, Slider, TrustedBy } from "~/components";
 import CategoryCard from "~/components/categoryCard/CategoryCard";
 //mocks
 import { categoriesMocked, projectsMocked } from "~/mocks/data.mocks";
 import { featuresMock, featuresMock2 } from "~/mocks/features.mocks";
-
 //assets
 import checkSvg from "~/assets/icons/check.svg";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="home">
       <Featured />
@@ -82,4 +81,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

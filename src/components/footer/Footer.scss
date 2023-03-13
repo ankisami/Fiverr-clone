@@ -17,11 +17,11 @@
     padding: 0 20px;
     .top {
       flex: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-      @media screen and (max-width: 613px) {
+      display: grid;
+      justify-content: space-evenly;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 200px));
+      gap: 40px 15px;
+      @media screen and (max-width: 670px) {
         display: none;
       }
       .item {
