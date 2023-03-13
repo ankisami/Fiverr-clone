@@ -6,17 +6,25 @@ import GigCard from "../../components/gigCard/GigCard";
 import useOutsideClicker from "~/hooks/useOutsideClicker";
 //assets
 import arrowSvg from "~/assets/icons/arrow.svg";
+import validSvg from "~/assets/icons/valid.svg";
 //mocks
 import { gigsMocked } from "~/mocks/data.mocks";
 
+type SortBy = "recommended" | "bestSelling" | "newest";
+
 function Gigs() {
-  const [sort, setSort] = useState("sales");
+  const [sort, setSort] = useState<SortBy>("recommended");
   const [open, setOpen] = useState(false);
   const minRef = useRef<HTMLInputElement>(null);
   const maxRef = useRef<HTMLInputElement>(null);
   const sortByRef = useOutsideClicker(() => setOpen(false));
+  const sortCategeries = {
+    recommended: "Recommended",
+    bestSelling: "Best Selling",
+    newest: "Newest Arrivals",
+  };
 
-  const reSort = (type: string) => {
+  const reSort = (type: SortBy) => {
     setSort(type);
     setOpen(false);
   };
@@ -43,20 +51,35 @@ function Gigs() {
             <input ref={maxRef} type="number" placeholder="max" />
             <button onClick={apply}>Apply</button>
           </div>
-          <div className="right" ref={sortByRef} onClick={() => setOpen(!open)}>
+          <div className="right" onClick={() => setOpen(!open)}>
             <span className="sortBy">Sort by</span>
-            <span className="sortType">
-              {sort === "sales" ? "Best Selling" : "Newest"}
-            </span>
+            <span className="sortType">{sortCategeries[sort]}</span>
             <img src={arrowSvg} alt="" />
             {open && (
               <div className="rightMenu">
-                {sort === "sales" ? (
-                  <span onClick={() => reSort("createdAt")}>Newest</span>
-                ) : (
-                  <span onClick={() => reSort("sales")}>Best Selling</span>
-                )}
-                <span onClick={() => reSort("sales")}>Popular</span>
+                <div className="item">
+                  <img
+                    src={validSvg}
+                    className={sort === "recommended" ? "visible" : ""}
+                  />
+                  <span onClick={() => reSort("recommended")}>Recommended</span>
+                </div>
+                <div className="item">
+                  <img
+                    src={validSvg}
+                    className={sort === "bestSelling" ? "visible" : ""}
+                  />
+                  <span onClick={() => reSort("bestSelling")}>
+                    Best Selling
+                  </span>
+                </div>
+                <div className="item">
+                  <img
+                    src={validSvg}
+                    className={sort === "newest" ? "visible" : ""}
+                  />
+                  <span onClick={() => reSort("newest")}>Newest Arrivals</span>
+                </div>
               </div>
             )}
           </div>
