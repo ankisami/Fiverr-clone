@@ -78,6 +78,7 @@ const Footer = () => {
           </div>
         </div>
         <hr />
+
         <div className="bottom">
           <div className="left">
             <img src={fiverrSvg} alt="Fiverr" className="logo" />
@@ -94,12 +95,10 @@ const Footer = () => {
             <div className="link">
               <img src={worldSvg} alt="" />
               <span>English</span>
-            </div>
-            <div className="link">
               <span>$</span>
               <span>USD</span>
+              <img src={manSvg} alt="" />
             </div>
-            <img src={manSvg} alt="" />
           </div>
         </div>
       </div>
