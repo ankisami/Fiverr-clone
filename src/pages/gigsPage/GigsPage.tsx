@@ -9,15 +9,17 @@ import arrowSvg from "~/assets/icons/arrow.svg";
 import validSvg from "~/assets/icons/valid.svg";
 //mocks
 import { gigsMocked } from "~/mocks/data.mocks";
+//libs
+import cn from "classnames";
 
 type SortBy = "recommended" | "bestSelling" | "newest";
 
 function Gigs() {
   const [sort, setSort] = useState<SortBy>("recommended");
-  const [open, setOpen] = useState(false);
+  const [isSortByMenu, setIsSortByMenu] = useState(false);
   const minRef = useRef<HTMLInputElement>(null);
   const maxRef = useRef<HTMLInputElement>(null);
-  const sortByRef = useOutsideClicker(() => setOpen(false));
+  const sortByRef = useOutsideClicker(() => setIsSortByMenu(false));
   const sortCategeries = {
     recommended: "Recommended",
     bestSelling: "Best Selling",
@@ -26,7 +28,7 @@ function Gigs() {
 
   const reSort = (type: SortBy) => {
     setSort(type);
-    setOpen(false);
+    setIsSortByMenu(false);
   };
 
   const apply = () => {
@@ -34,6 +36,7 @@ function Gigs() {
     console.log(maxRef.current?.value);
   };
 
+  console.log("isSortByMenu", isSortByMenu);
   return (
     <div className="gigs">
       <div className="container">
@@ -51,37 +54,46 @@ function Gigs() {
             <input ref={maxRef} type="number" placeholder="max" />
             <button onClick={apply}>Apply</button>
           </div>
-          <div className="right" onClick={() => setOpen(!open)}>
-            <span className="sortBy">Sort by</span>
-            <span className="sortType">{sortCategeries[sort]}</span>
-            <img src={arrowSvg} alt="" />
-            {open && (
-              <div className="rightMenu">
-                <div className="item">
-                  <img
-                    src={validSvg}
-                    className={sort === "recommended" ? "visible" : ""}
-                  />
-                  <span onClick={() => reSort("recommended")}>Recommended</span>
-                </div>
-                <div className="item">
-                  <img
-                    src={validSvg}
-                    className={sort === "bestSelling" ? "visible" : ""}
-                  />
-                  <span onClick={() => reSort("bestSelling")}>
-                    Best Selling
-                  </span>
-                </div>
-                <div className="item">
-                  <img
-                    src={validSvg}
-                    className={sort === "newest" ? "visible" : ""}
-                  />
-                  <span onClick={() => reSort("newest")}>Newest Arrivals</span>
-                </div>
+
+          <div ref={sortByRef}>
+            <div
+              className="sortByMenu"
+              onClick={() => setIsSortByMenu((prev) => !prev)}
+            >
+              <span className="sortBy">Sort by</span>
+              <span className="sortType">{sortCategeries[sort]}</span>
+              <img
+                src={arrowSvg}
+                alt="Sort by menu"
+                className={cn({ ["isSortByMenu"]: isSortByMenu })}
+              />
+            </div>
+
+            <div
+              className={cn("sortByMenuOverlay", { ["open"]: isSortByMenu })}
+            >
+              <div className="menuOption" onClick={() => reSort("recommended")}>
+                <img
+                  src={validSvg}
+                  className={cn({ ["visible"]: sort === "recommended" })}
+                />
+                <span>Recommended</span>
               </div>
-            )}
+              <div className="menuOption" onClick={() => reSort("bestSelling")}>
+                <img
+                  src={validSvg}
+                  className={cn({ ["visible"]: sort === "bestSelling" })}
+                />
+                <span>Best Selling</span>
+              </div>
+              <div className="menuOption" onClick={() => reSort("newest")}>
+                <img
+                  src={validSvg}
+                  className={cn({ ["visible"]: sort === "newest" })}
+                />
+                <span>Newest Arrivals</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="cards">

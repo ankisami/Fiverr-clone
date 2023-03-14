@@ -28,6 +28,7 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
+      position: relative;
 
       .left {
         display: flex;
@@ -58,13 +59,12 @@
         }
       }
 
-      .right {
-        position: relative;
+      .sortByMenu {
         display: flex;
         align-items: center;
-        gap: 10px;
+        justify-content: space-between;
+        width: 186px;
         cursor: pointer;
-
         .sortBy {
           color: #555;
           font-weight: 300;
@@ -76,41 +76,47 @@
           width: 15px;
           height: 15px;
           transform: rotate(90deg);
+          transition: all 0.3s ease-in-out;
+          &.open {
+            transform: rotate(-90deg);
+          }
+        }
+      }
+      .sortByMenuOverlay {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 238px;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        z-index: 10;
+        background-color: $white;
+        color: #555;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        height: 0;
+        &.open {
+          height: 158px;
+          border-radius: 5px;
+          border: 0.5px solid lightgrey;
         }
 
-        .rightMenu {
+        .menuOption {
           display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          gap: 10px;
-          width: 238px;
-          height: 158px;
-          position: absolute;
-          top: 30px;
-          right: 0;
-          z-index: 9;
-          padding: 24px;
-          background-color: $white;
-          border: 0.5px solid lightgrey;
-          border-radius: 5px;
-          color: #555;
-          .item {
-            display: flex;
-            align-items: center;
-            padding: 9px 16px;
-
-            &:hover {
-              background-color: $gray-light;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-            img {
-              margin-right: 16px;
-              transform: rotate(0deg);
-              visibility: hidden;
-              &.visible {
-                visibility: visible;
-              }
+          flex: 1;
+          align-items: center;
+          padding: 9px 16px;
+          &:hover {
+            background-color: $gray-light;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          img {
+            margin-right: 16px;
+            visibility: hidden;
+            &.visible {
+              visibility: visible;
             }
           }
         }
