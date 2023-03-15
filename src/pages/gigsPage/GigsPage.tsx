@@ -38,7 +38,7 @@ function Gigs() {
 
   console.log("isSortByMenu", isSortByMenu);
   return (
-    <div className="gigs">
+    <div className="gigsPage">
       <div className="container">
         <span className="breadcrumbs">
           Liverr {">"} Graphics & Design {">"}

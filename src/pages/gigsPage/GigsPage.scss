@@ -1,5 +1,5 @@
 @import "~/styles/colors";
-.gigs {
+.gigsPage {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -125,7 +125,7 @@
 
     .cards {
       display: grid;
-      gap: 20px;
+      gap: 40px 20px;
       justify-content: space-evenly;
       grid-template-columns: repeat(auto-fill, 322px);
     }

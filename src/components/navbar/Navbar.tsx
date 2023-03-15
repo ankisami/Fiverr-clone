@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import "~/App.scss";
 //mocks
 import { mockedUser } from "~/mocks/user.mocks";
 //libs
 import { Link, useLocation } from "react-router-dom";
+import cn from "classnames";
 //assets
 import profile1 from "~/assets/images/profile1.jpeg";
 import arrow from "~/assets/icons/arrow.svg";
@@ -94,63 +94,62 @@ const Navbar = () => {
         </div>
       </div>
 
-      {(isActiveMainMenuSubMenu || pathname !== "/") && (
-        <>
-          <hr />
-          <ul className="menu">
-            <li>
-              <Link className="link menuLink" to="/">
-                Graphics & Design
-              </Link>
-            </li>
+      {/* {(isActiveMainMenuSubMenu || pathname !== "/") && (
+        <> */}
+      <ul className={cn("menu", { ["active"]: isActiveMainMenuSubMenu })}>
+        <li>
+          <Link className="link" to="/">
+            Graphics & Design
+          </Link>
+        </li>
 
-            <li>
-              <Link className="link " to="/">
-                Video & Animation
-              </Link>
-            </li>
+        <li>
+          <Link className="link " to="/">
+            Video & Animation
+          </Link>
+        </li>
 
-            <li>
-              <Link className="link " to="/">
-                Writing & Translation
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                AI Services
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                Digital Marketing
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                Music & Audio
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                Programming & Tech
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                Business
-              </Link>
-            </li>
-            <li>
-              <Link className="link " to="/">
-                Lifestyle
-              </Link>
-            </li>
-            <button>
-              <img src={arrow} alt="" />
-            </button>
-          </ul>
-        </>
-      )}
+        <li>
+          <Link className="link " to="/">
+            Writing & Translation
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            AI Services
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            Digital Marketing
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            Music & Audio
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            Programming & Tech
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            Business
+          </Link>
+        </li>
+        <li>
+          <Link className="link " to="/">
+            Lifestyle
+          </Link>
+        </li>
+        <button>
+          <img src={arrow} alt="" />
+        </button>
+      </ul>
+      {/* </>
+      )} */}
     </div>
   );
 };
