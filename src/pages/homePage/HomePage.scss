@@ -1,6 +1,12 @@
 @import "~/styles/colors";
 
 .home {
+  .sliderContainer {
+    max-width: 1400px;
+  }
+  .slider {
+    width: 250px !important;
+  }
   .features {
     background-color: $white-light3;
     display: flex;

@@ -9,12 +9,10 @@ type Props = {
 };
 function CategoryCard({ item }: Props) {
   return (
-    <Link to="/gigs?cat=design">
-      <div className="categoryCard">
-        <img src={item.image} alt={item.title} />
-        <span className="description">{item.description}</span>
-        <span className="title">{item.title}</span>
-      </div>
+    <Link to="/gigs?cat=design" className="categoryCard">
+      <img src={item.image} alt={item.title} />
+      <span className="description">{item.description}</span>
+      <span className="title">{item.title}</span>
     </Link>
   );
 }

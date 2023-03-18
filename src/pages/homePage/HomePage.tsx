@@ -1,24 +1,59 @@
 import React from "react";
 import "./HomePage.scss";
 //components
-import { Featured, ProjectCard, Slider, TrustedBy } from "~/components";
+import { Featured, ProjectCard, TrustedBy } from "~/components";
 import CategoryCard from "~/components/categoryCard/CategoryCard";
 //mocks
 import { categoriesMocked, projectsMocked } from "~/mocks/data.mocks";
 import { featuresMock, featuresMock2 } from "~/mocks/features.mocks";
 //assets
 import checkSvg from "~/assets/icons/check.svg";
+//libs
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/swiper-bundle.min.css";
+import SwiperCore, { Autoplay } from "swiper";
+SwiperCore.use([Autoplay]);
 
 const HomePage = () => {
+  const swiperProps = {
+    spaceBetween: 25,
+    loop: true,
+    // centeredSlides: true,
+    // autoplay: {
+    //   delay: 3000,
+    //   disableOnInteraction: false,
+    // },
+    breakpoints: {
+      275: {
+        slidesPerView: 1,
+      },
+      525: {
+        slidesPerView: 2,
+      },
+      800: {
+        slidesPerView: 3,
+      },
+      1075: {
+        slidesPerView: 4,
+      },
+    },
+  };
+
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slider>
-        {categoriesMocked.map((cat) => (
-          <CategoryCard key={cat.id} item={cat} />
+
+      <Swiper {...swiperProps} className="sliderContainer">
+        {categoriesMocked.map((category) => (
+          <SwiperSlide key={category.id} className="slider">
+            <CategoryCard item={category} />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
+
       <section className="features">
         <div className="container">
           <div className="item">
@@ -72,11 +107,13 @@ const HomePage = () => {
         </div>
       </section>
 
-      <Slider slidesToShow={4}>
+      <Swiper {...swiperProps}>
         {projectsMocked.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <SwiperSlide key={project.id}>
+            <ProjectCard project={project} />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </div>
   );
 };

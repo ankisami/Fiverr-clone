@@ -1,5 +1,8 @@
 import "./GigPage.scss";
-import { Slider } from "infinite-react-carousel";
+// libs
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+import "swiper/css";
 
 const GigPage = () => {
   return (
@@ -26,20 +29,38 @@ const GigPage = () => {
               <span>5</span>
             </div>
           </div>
-          <Slider slidesToShow={1} arrowsScroll={1}>
-            <img
-              src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-          </Slider>
+
+          <Swiper
+            spaceBetween={25}
+            autoplay
+            loop
+            pagination={{
+              clickable: true,
+            }}
+            navigation
+            modules={[Pagination, Navigation]}
+            slidesPerView={"auto"}
+            centeredSlides
+          >
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+          </Swiper>
           <h2>About This Gig</h2>
           <p>
             I use an AI program to create images based on text prompts. This
