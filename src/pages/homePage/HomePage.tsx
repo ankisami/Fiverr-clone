@@ -10,21 +10,21 @@ import { featuresMock, featuresMock2 } from "~/mocks/features.mocks";
 import checkSvg from "~/assets/icons/check.svg";
 //libs
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/swiper-bundle.min.css";
-import SwiperCore, { Autoplay } from "swiper";
 SwiperCore.use([Autoplay]);
 
 const HomePage = () => {
   const swiperProps = {
+    className: "sliderContainer",
     spaceBetween: 25,
     loop: true,
-    // centeredSlides: true,
-    // autoplay: {
-    //   delay: 3000,
-    //   disableOnInteraction: false,
-    // },
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     breakpoints: {
       275: {
         slidesPerView: 1,
@@ -46,9 +46,9 @@ const HomePage = () => {
       <Featured />
       <TrustedBy />
 
-      <Swiper {...swiperProps} className="sliderContainer">
+      <Swiper {...swiperProps}>
         {categoriesMocked.map((category) => (
-          <SwiperSlide key={category.id} className="slider">
+          <SwiperSlide key={category.id} className="slide">
             <CategoryCard item={category} />
           </SwiperSlide>
         ))}

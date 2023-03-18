@@ -1,8 +1,11 @@
 import "./GigPage.scss";
 // libs
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css";
+import "swiper/swiper-bundle.min.css";
+SwiperCore.use([Autoplay]);
 
 const GigPage = () => {
   return (
@@ -31,16 +34,16 @@ const GigPage = () => {
           </div>
 
           <Swiper
-            spaceBetween={25}
-            autoplay
-            loop
-            pagination={{
-              clickable: true,
-            }}
-            navigation
-            modules={[Pagination, Navigation]}
-            slidesPerView={"auto"}
-            centeredSlides
+          // spaceBetween={25}
+          // autoplay
+          // loop
+          // pagination={{
+          //   clickable: true,
+          // }}
+          // navigation
+          // modules={[Pagination, Navigation]}
+          // slidesPerView={"auto"}
+          // centeredSlides
           >
             <SwiperSlide>
               <img

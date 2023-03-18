@@ -9,16 +9,18 @@ type Props = {
 };
 function ProjectCard({ project }: Props) {
   return (
-    <Link to="/" className="projectCard">
-      <img src={project.img} alt="project" />
-      <div className="info">
-        <img src={project.pp} alt="" />
-        <div className="texts">
-          <h2>{project.cat}</h2>
-          <span>{project.username}</span>
+    <div className="projectCard">
+      <Link to="/" className="texts">
+        <img src={project.img} alt="project" />
+        <div className="info">
+          <img src={project.pp} alt="" />
+          <div className="texts">
+            <h2>{project.cat}</h2>
+            <span>{project.username}</span>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
